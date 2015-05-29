@@ -26,6 +26,7 @@ public class PicturesAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        // Let the holder bind the picture.
         Picture picture = pictures.get(position);
         PictureHolder pictureHolder = (PictureHolder) holder;
         pictureHolder.bind(picture);

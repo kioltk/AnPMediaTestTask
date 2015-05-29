@@ -28,16 +28,17 @@ import testtask.testtask.storage.StorageManager;
  */
 public abstract class PicturesFetchingTask extends AsyncTask<Object,Void,Object> {
     private static final String LOG_TAG = "Fethcing Task";
-    private static final String serverUrl = "http://pixabay.com/api/" ;
+    private static final String serverUrl = "http://pixabay.com/api/";
     protected String methodName = "";
     private NameValuePair fileArgument = null;
     List<NameValuePair> arguments;
-    public PicturesFetchingTask(String query){
+
+    public PicturesFetchingTask(String query) {
         arguments = new ArrayList<>();
         addArgument("q", query);
-        addArgument("username","kioltk0");
-        addArgument("key","a65c8cacaa9c3dcf5e74");
-        addArgument("image_type","photo");
+        addArgument("username", "kioltk0");
+        addArgument("key", "a65c8cacaa9c3dcf5e74");
+        addArgument("image_type", "photo");
         addArgument("per_page", 50);
 
     }
@@ -66,16 +67,15 @@ public abstract class PicturesFetchingTask extends AsyncTask<Object,Void,Object>
             for (NameValuePair argument : arguments) {
                 argumentsLogging += argument.getName() + " = " + argument.getValue() + "\n";
             }
-            Log.i(LOG_TAG,"Arguments: " + argumentsLogging);
+            Log.i(LOG_TAG, "Arguments: " + argumentsLogging);
 
             HttpResponse httpResponse = httpClient.execute(request);
             HttpEntity httpEntity = httpResponse.getEntity();
             String responseString = EntityUtils.toString(httpEntity);
-            Log.i(LOG_TAG,"Server response " + responseString);
+            Log.i(LOG_TAG, "Server response " + responseString);
             return parseAndSave(responseString);
 
-        }
-        catch (Exception exp){
+        } catch (Exception exp) {
             return exp;
         }
     }
@@ -89,11 +89,11 @@ public abstract class PicturesFetchingTask extends AsyncTask<Object,Void,Object>
 
     @Override
     protected void onPostExecute(Object o) {
-        if(o instanceof Exception){
+        if (o instanceof Exception) {
             Exception exp = (Exception) o;
             exp.printStackTrace();
             onError(exp);
-        }else{
+        } else {
             onSuccess((ArrayList<Picture>) o);
         }
     }

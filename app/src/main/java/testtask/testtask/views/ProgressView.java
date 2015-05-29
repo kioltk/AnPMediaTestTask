@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import java.util.Arrays;
 
 /**
- * Created by Jesus Christ. Amen.
+ * Well its example of Material ProgressView from web I found.
  */
 public class ProgressView extends ProgressBar {
     RectF rectF;
@@ -23,6 +23,10 @@ public class ProgressView extends ProgressBar {
     boolean reverse = false;
     int nextcolor = 1;
 
+    /**
+     *
+     * todo replace with resources and add setters
+     * */
     final int[][] colors = {
             {224, 187, 63},
             {224, 46, 25},

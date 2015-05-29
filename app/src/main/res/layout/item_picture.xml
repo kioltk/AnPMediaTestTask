@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <!--
+        We have to hold imageView inside another box because recycler does not provide
+        resizing the item's root.
+    -->
     <ImageView
         android:id="@+id/picture"
-        android:background="@drawable/shape"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ImageView>
+        android:layout_height="match_parent"/>
 </FrameLayout>

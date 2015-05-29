@@ -15,14 +15,14 @@ public abstract class CacheLoadingTask extends AsyncTask {
     protected Object doInBackground(Object[] params) {
         try {
             return new StorageManager().loadPictures();
-        } catch(Exception exp){
+        } catch (Exception exp) {
             return exp;
         }
     }
 
     @Override
     protected void onPostExecute(Object o) {
-        if(o instanceof Exception){
+        if (o instanceof Exception) {
             onError((Exception) o);
         } else {
             onSuccess((ArrayList<Picture>) o);

@@ -14,7 +14,10 @@ public class TestTaskApplication extends Application {
 
     private static TestTaskApplication application;
 
-    public static TestTaskApplication app(){
+    /**
+     *
+     * */
+    public static TestTaskApplication app() {
         return application;
     }
 
@@ -23,7 +26,8 @@ public class TestTaskApplication extends Application {
         super.onCreate();
         application = this;
 
-
+        // We define image loading, caching in memory and caching on disk for better picture
+        // showing performance.
         ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(this)
                 .threadPriority(Thread.MAX_PRIORITY)
                 .memoryCache(new LruMemoryCache(5 * 1024 * 1024))
